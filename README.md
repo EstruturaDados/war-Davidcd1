@@ -56,3 +56,63 @@ Este projeto representa a evolução pelos três níveis:
 | **Nível Novato** | `struct`, vetor estático, entrada/saída. |
 | **Nível Aventureiro** | `calloc`/`free`, ponteiros, `rand()`, laço interativo. |
 | **Nível Mestre** | Modularização, Ponteiros Avançados, `const` correctness, Sistema de Missões. |
+
+
+## 🧠 Nível Mestre: Missões e Modularização Total
+
+### 🎯 Objetivo
+
+- Dividir o código em funções bem definidas
+- Implementar um **sistema de missões**
+- Verificar cumprimento da missão
+- Aplicar **boas práticas** (uso de `const`, modularização, etc.)
+
+### 🆕 Diferenças em relação ao Nível Aventureiro
+
+- Modularização total em funções
+- Missões aleatórias atribuídas:
+  1. Destruir o exército **Verde**
+  2. Conquistar **3 territórios**
+- Menu interativo com opções
+
+### ⚙️ Funcionalidades
+
+- Inicialização automática dos territórios
+- Menu principal com 3 opções:
+  1. Atacar
+  2. Verificar Missão
+  3. Sair
+- Verificação de vitória da missão
+
+### 💡 Conceitos abordados
+
+- Modularização
+- `const` correctness
+- Estruturação em múltiplas funções
+- Passagem por referência
+
+### 📥 Entrada
+
+- Ações do jogador via menu:
+  - `1` - Atacar
+  - `2` - Verificar Missão
+  - `0` - Sair
+- Escolha de territórios para ataque
+
+### 📤 Saída
+
+- Mapa atualizado
+- Resultados das batalhas
+- Verificação da missão
+- Mensagem de vitória
+
+
+
+## 🏁 Conclusão
+
+Com este **Desafio WAR Estruturado**, você praticará fundamentos essenciais da linguagem **C** de forma **divertida e progressiva**.
+
+Cada nível foca em um conjunto de habilidades:
+
+- 🟢 **Novato**: `struct`, vetor, entrada/saída
+- 🔵 **Aventureiro**: ponteiros, memória dinâmica, lógica de jogo
