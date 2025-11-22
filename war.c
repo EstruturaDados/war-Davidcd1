@@ -102,7 +102,7 @@ int main() {
         printf("Escolha invalida. Comandando o primeiro territorio (%s) por padrao.\n", mapa[0].nome);
         escolha_territorio = 1;
     }
-    // Armazena a cor do território escolhido como a cor do jogador
+    // Armazena a cor do território escolhido como a cor do jogador 
     strcpy(g_corJogador, mapa[escolha_territorio - 1].corExercito);
     printf("Voce e o exercito %s. Boa sorte!\n", g_corJogador);
     
@@ -136,7 +136,7 @@ int main() {
         limparBufferEntrada();
         
         switch(opcao){
-            //   - Opção 1: Inicia a fase de ataque.
+            // Opção 1: Inicia a fase de ataque.
             case 1:
                 faseDeAtaque(mapa);
                 // Verifica a vitória silenciosamente após o ataque (Requisito)
@@ -264,7 +264,7 @@ void atribuirMissao(char* destino, const char* missoes[], int totalMissoes) {
 void exibirMissao(const char *missao){
     printf("\n--- SUA MISSAO (Exercito %s) ---\n", g_corJogador);
     printf("%s\n", missao);
-    printf("===========================\n");
+    printf("==============================\n");
 }
 
 // faseDeAtaque():
