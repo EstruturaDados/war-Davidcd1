@@ -1,145 +1,58 @@
-# 🗺️ Desafio WAR Estruturado – Conquista de Territórios
+# 🗺️ Desafio WAR Estruturado – Nível Mestre: Missões Estratégicas
 
-Bem-vindo ao **Desafio WAR Estruturado!** Inspirado no famoso jogo de estratégia, este desafio convida você a programar diferentes versões do jogo WAR, evoluindo seus conhecimentos em **C** à medida que avança pelos níveis **Novato**, **Aventureiro** e **Mestre**.
+## 🏆 Status do Projeto: Nível Mestre Concluído
 
-A empresa **MateCheck** contratou você para criar uma versão estruturada do WAR. Cada nível propõe novas funcionalidades, conceitos e desafios de programação. **Você escolhe por onde começar!**
+Este repositório contém a solução para o **Desafio WAR Estruturado**, uma série de exercícios focados na evolução de habilidades de programação em C. O projeto foi concluído no **Nível Mestre**, implementando o sistema de missões estratégicas, modularização total, alocação dinâmica e gerenciamento de memória.
 
 ---
 
-## 🧩 Nível Novato: Cadastro Inicial dos Territórios
+## 🎯 Requisitos Funcionais Implementados (Nível Mestre)
 
-### 🎯 Objetivo
+A implementação no Nível Mestre adiciona uma nova camada estratégica, exigindo organização modular e o uso de ponteiros avançados.
 
-- Criar uma `struct` chamada `Territorio`.
-- Usar um **vetor estático de 5 elementos** para armazenar os territórios.
-- Cadastrar os dados de cada território: **Nome**, **Cor do Exército**, e **Número de Tropas**.
-- Exibir o estado atual do mapa.
+| Funcionalidade | Implementação no Código |
+| :--- | :--- |
+| **Criação do Vetor de Missões** | Vetor `MISSOES` com 5 descrições estratégicas (`Destruir Verde`, `Conquistar 3 territórios`, etc.). |
+| **Sorteio da Missão** | Função `void atribuirMissao(char* destino, ...)` que sorteia a missão e a copia usando `strcpy`. |
+| **Armazenamento Dinâmico** | A missão do jogador é alocada dinamicamente com `malloc` e liberada com `free`. |
+| **Verificação da Missão** | Função `int verificarMissao(...)` avalia se os objetivos (contagem de territórios ou destruição de exércitos) foram cumpridos. |
+| **Encerramento Condicional** | O loop principal do jogo (`main`) encerra **imediatamente** após a missão ser cumprida, declarando a vitória. |
 
-### ⚙️ Funcionalidades
+---
 
-- Leitura de dados pelo terminal (`fgets` e `scanf`)
-- Impressão organizada dos dados de todos os territórios
+## ⚙️ Requisitos Técnicos e Boas Práticas (C)
 
-### 💡 Conceitos abordados
+Todos os requisitos técnicos avançados e de boas práticas foram aplicados no projeto:
 
-- `struct`
-- Vetor estático
-- Entrada/saída com `scanf`, `fgets`, e `printf`
+* **Modularização Total:** O código é dividido em funções claras (`atribuirMissao`, `verificarMissao`, `atacar`, `exibirMapa`, etc.).
+* **Uso de Ponteiros:** Manipulação de dados (`mapa` e `missaoJogador`) através de ponteiros.
+* **Const Correctness:** Uso de `const` (ex: `exibirMapa(const Territorio *mapa)`) para garantir que dados de leitura não sejam modificados.
+* **Alocação e Liberação:** Uso de `calloc` para o mapa e `malloc` para a missão, e `liberarMemoria()` e `free()` ao final para evitar vazamentos.
+* **Lógica de Combate:** A função `atacar()` implementa a regra de **transferir a cor e metade das tropas** em caso de conquista.
+* **Validação:** Validação implementada para garantir que o jogador só possa atacar com o seu exército (`g_corJogador`) e somente territórios inimigos.
 
-### 📥 Entrada
+---
 
-O usuário digita o nome do território, a cor do exército dominante e o número de tropas para **cada um dos 5 territórios**.
+## 💻 Estrutura do Jogo e Execução
 
-### 📤 Saída
+O jogo segue uma estrutura limpa e orientada a funções:
 
+1.  **Setup Inicial:** Alocação de memória, inicialização de 5 territórios com cores fixas e únicas, e a escolha do exército pelo jogador.
+2.  **Atribuição da Missão:** A missão secreta é sorteada e atribuída dinamicamente.
+3.  **Game Loop (`do-while`):**
+    * Exibe o mapa e a missão.
+    * O jogador escolhe entre **Atacar** ou **Verificar Missão**.
+    * A cada ataque, a vitória é checada silenciosamente.
+4.  **Encerramento:** O loop termina quando o jogador cumpre a missão (`venceu = 1`) ou escolhe sair (`opcao = 0`).
 
+---
 
-## 🧗‍♂️ Nível Aventureiro: Batalhas Estratégicas
+### 📚 Progressão de Habilidades
 
-### 🎯 Objetivo
+Este projeto representa a evolução pelos três níveis:
 
-- Substituir o vetor estático por **alocação dinâmica com `calloc`**
-- Criar uma função para **simular ataques entre dois territórios**
-- Utilizar números aleatórios para representar dados de batalha
-
-### 🆕 Novidades em relação ao Nível Novato
-
-- Alocação dinâmica de memória com `calloc`
-- Uso de **ponteiros**
-- Laço interativo para o jogador escolher **territórios para atacar e defender**
-- Simulação de dados de ataque e defesa com `rand()`
-
-### ⚙️ Funcionalidades
-
-- Cadastro dos territórios (como no Nível Novato)
-- Fase de ataque com:
-  - Escolha de atacante e defensor
-  - Dados de ataque/defesa
-  - Lógica:
-    - Se atacante vence → defensor perde 1 tropa
-    - Se defensor perde todas → território é conquistado
-    - Empates favorecem o atacante
-
-### 💡 Conceitos abordados
-
-- Ponteiros
-- `calloc` / `free`
-- Aleatoriedade com `rand()` / `srand()`
-- Funções para modularização
-
-### 📥 Entrada
-
-- Território **atacante** (1 a 5)
-- Território **defensor** (1 a 5)
-
-### 📤 Saída
-
-Exibição do resultado da batalha, dados sorteados e mudanças no mapa.
-
-
-
-## 🧠 Nível Mestre: Missões e Modularização Total
-
-### 🎯 Objetivo
-
-- Dividir o código em funções bem definidas
-- Implementar um **sistema de missões**
-- Verificar cumprimento da missão
-- Aplicar **boas práticas** (uso de `const`, modularização, etc.)
-
-### 🆕 Diferenças em relação ao Nível Aventureiro
-
-- Modularização total em funções
-- Missões aleatórias atribuídas:
-  1. Destruir o exército **Verde**
-  2. Conquistar **3 territórios**
-- Menu interativo com opções
-
-### ⚙️ Funcionalidades
-
-- Inicialização automática dos territórios
-- Menu principal com 3 opções:
-  1. Atacar
-  2. Verificar Missão
-  3. Sair
-- Verificação de vitória da missão
-
-### 💡 Conceitos abordados
-
-- Modularização
-- `const` correctness
-- Estruturação em múltiplas funções
-- Passagem por referência
-
-### 📥 Entrada
-
-- Ações do jogador via menu:
-  - `1` - Atacar
-  - `2` - Verificar Missão
-  - `0` - Sair
-- Escolha de territórios para ataque
-
-### 📤 Saída
-
-- Mapa atualizado
-- Resultados das batalhas
-- Verificação da missão
-- Mensagem de vitória
-
-
-
-## 🏁 Conclusão
-
-Com este **Desafio WAR Estruturado**, você praticará fundamentos essenciais da linguagem **C** de forma **divertida e progressiva**.
-
-Cada nível foca em um conjunto de habilidades:
-
-- 🟢 **Novato**: `struct`, vetor, entrada/saída
-- 🔵 **Aventureiro**: ponteiros, memória dinâmica, lógica de jogo
-- 🟣 **Mestre**: modularização, design limpo, sistema de missões
-
-
-
-🚀 **Boa sorte! Avance nos níveis e torne-se um mestre da programação estratégica!**
-
-> Equipe de Ensino – MateCheck
+| Nível | Habilidades Chave |
+| :--- | :--- |
+| **Nível Novato** | `struct`, vetor estático, entrada/saída. |
+| **Nível Aventureiro** | `calloc`/`free`, ponteiros, `rand()`, laço interativo. |
+| **Nível Mestre** | Modularização, Ponteiros Avançados, `const` correctness, Sistema de Missões. |
